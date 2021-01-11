@@ -9,11 +9,10 @@ export const delete_comment = (id) => ({ type: DELETE_COMMENTS, id });
 export const initialState = [
   {
     id: 1,
-    title: "연습임돠",
-  },
-  {
-    id: 2,
-    title: "연습",
+    profile_url: "https://picsum.photos/id/1/50/50",
+    author: "abc_1",
+    content: "UI 테스트는 어떻게 진행하나요",
+    createdAt: "2020-05-01",
   },
 ];
 
