@@ -6,8 +6,11 @@ const GET_COMMENTS = "GET_COMMENTS";
 const GET_SUCCESS = "GET_SUCCESS";
 const GET_ERROR = "GET_ERROR";
 const GET_LENGTH = "GET_LENGTH";
+const GET_PAGES = "GET_PAGES";
+
 export const add_comment = (detail) => ({ type: ADD_COMMENTS, detail });
 export const delete_comment = (id) => ({ type: DELETE_COMMENTS, id });
+export const get_pages = (page) => ({ type: GET_PAGES, page });
 export const getLength = () => async (dispatch) => {
   try {
     const pages = await commentsApi.totalComments();
@@ -16,10 +19,10 @@ export const getLength = () => async (dispatch) => {
     dispatch({ type: GET_ERROR, error: e });
   }
 };
-export const getComments = () => async (dispatch) => {
+export const getComments = (page) => async (dispatch) => {
   dispatch({ type: GET_COMMENTS });
   try {
-    const comments = await commentsApi.getComments();
+    const comments = await commentsApi.getComments(page);
     dispatch({ type: GET_SUCCESS, comments });
   } catch (e) {
     dispatch({ type: GET_ERROR, error: e });
@@ -65,6 +68,11 @@ export default function comments(state = initialState, action) {
       return {
         ...state,
         pages: action.pages,
+      };
+    case GET_PAGES:
+      return {
+        ...state,
+        page: action.page,
       };
     default:
       return state;

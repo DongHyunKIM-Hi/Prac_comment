@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getComments = async () => {
+export const getComments = async (page) => {
   const response = await axios.get(
-    "/comments?_page=3&_limit=4&_order=desc&_sort=id"
+    `/comments?_page=${page}&_limit=4&_order=desc&_sort=id`
   );
   return response.data;
 };
