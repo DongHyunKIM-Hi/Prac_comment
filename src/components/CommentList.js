@@ -38,7 +38,6 @@ const Button = styled.div`
 // 임시 데이터 입니다. 코드 작성시 data 부분을 지워주세요
 
 function CommentList({ data }) {
-  console.log(data);
   return data.map((comment, key) => (
     <Comment key={key}>
       <img src={comment.profile_url} alt="" />
