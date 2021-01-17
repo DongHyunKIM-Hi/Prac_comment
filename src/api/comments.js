@@ -11,3 +11,8 @@ export const totalComments = async () => {
   const response = await axios.get("/comments");
   return response.data.length;
 };
+
+export const deleteComments = async (id) => {
+  const response = await axios.delete(`/comments/${id}`);
+  return response.data.length;
+};

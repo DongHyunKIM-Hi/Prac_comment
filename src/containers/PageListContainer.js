@@ -14,7 +14,7 @@ function PageListContainer() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getLength());
-  }, [page]);
+  }, [page, dispatch]);
   if (!pages) return null;
   return <PageList pages={Math.ceil(pages / 4)} onPage={onChange_page} />;
 }

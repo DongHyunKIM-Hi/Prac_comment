@@ -37,7 +37,7 @@ const Button = styled.div`
 
 // 임시 데이터 입니다. 코드 작성시 data 부분을 지워주세요
 
-function CommentList({ data }) {
+function CommentList({ data, onDelete }) {
   return data.map((comment, key) => (
     <Comment key={key}>
       <img src={comment.profile_url} alt="" />
@@ -50,7 +50,7 @@ function CommentList({ data }) {
 
       <Button>
         <a>수정</a>
-        <a>삭제</a>
+        <a onClick={() => onDelete(comment.id)}>삭제</a>
       </Button>
 
       <hr />

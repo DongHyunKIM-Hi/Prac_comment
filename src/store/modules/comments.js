@@ -9,7 +9,15 @@ const GET_LENGTH = "GET_LENGTH";
 const GET_PAGES = "GET_PAGES";
 
 export const add_comment = (detail) => ({ type: ADD_COMMENTS, detail });
-export const delete_comment = (id) => ({ type: DELETE_COMMENTS, id });
+export const delete_comment = (id) => async (dispatch) => {
+  try {
+    const pages = await commentsApi.deleteComments(id);
+    console.log("성공적인 삭제");
+    dispatch({ type: GET_LENGTH, pages });
+  } catch (e) {
+    dispatch({ type: GET_ERROR, error: e });
+  }
+};
 export const get_pages = (page) => ({ type: GET_PAGES, page });
 export const getLength = () => async (dispatch) => {
   try {
